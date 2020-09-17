@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <script>
+        var rps = ["rock", "paper", "scissors"];
+        let player = 0;
+        let computer = 0;
+        
+        function computerPlay() {
+            return rps[Math.floor(Math.random()*3)]; //randomly pick an element in rps array
+        }
+        function singleRound(playerSelection, computerSelection) {
+            
+            if (playerSelection == computerSelection) {
+                return "Draw"
+            }
+            else if ((playerSelection == "rock" && computerSelection == "scissors")
+                || (playerSelection == "paper" && computerSelection == "rock")
+                || (playerSelection == "scissors" && computerSelection == "paper")) {
+                player++;
+                return "You win"
+            }
+            else {
+                computer++;
+                return "You loose"
+            }
+                
+            }
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                const computerSelection = computerPlay();
+                let playerSelection = prompt("rock or paper or scissors ?");
+                playerSelection = playerSelection.toLowerCase();
+                if (rps.includes(playerSelection)) { //check if user type in right word
+                    console.log(singleRound(playerSelection, computerSelection), ", computer is", computerSelection);
+                } 
+                else {
+                    return "wrong input";
+                }
+                 
+            }
+            if (computer > player) {
+                console.log("computer-you: "+computer+"-"+player+"\nYou loose");
+            }
+            else if (computer == player) {
+                console.log("Draw");
+            }
+            else {
+                console.log("computer-you: "+computer+"-"+player+"\nYou win");
+            }
+        }
+
+
+    </script>
+</html>
